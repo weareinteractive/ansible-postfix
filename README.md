@@ -42,8 +42,8 @@ postfix_redirect_local_user: root
 postfix_service_enabled: yes
 # current state: started, stopped
 postfix_service_state: started
-
 ```
+
 ## Handlers
 
 These are the handlers that are defined in `handlers/main.yml`.
