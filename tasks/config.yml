@@ -1,0 +1,27 @@
+---
+
+- name: Listen only on local interface
+  lineinfile:
+    dest: /etc/postfix/main.cf
+    regexp: "^inet_interfaces"
+    line: "inet_interfaces = 127.0.0.1"
+    state: "{{ 'present' if postfix_listen_local_only else 'absent' }}"
+  notify: restart postfix
+
+- name: Setting up redirect
+  lineinfile:
+    dest: /etc/postfix/main.cf
+    regexp: "^canonical_maps="
+    line: "canonical_maps=regexp:/etc/postfix/canonical-redirect"
+    state: present
+  when: postfix_redirect_local
+  notify: restart postfix
+
+- name: Redirecting mails
+  lineinfile:
+    dest: /etc/postfix/canonical-redirect
+    line: "/^.*$/ {{ postfix_redirect_local_user }}"
+    state: present
+    create: yes
+  when: postfix_redirect_local
+  notify: restart postfix

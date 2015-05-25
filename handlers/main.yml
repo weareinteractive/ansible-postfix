@@ -4,3 +4,4 @@
 
 - name: restart postfix
   service: name=postfix state=restarted
+  when: postfix_service_state != 'stopped'

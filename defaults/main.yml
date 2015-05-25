@@ -2,10 +2,14 @@
 # For more information about default variables see:
 # http://www.ansibleworks.com/docs/playbooks_variables.html#id26
 
+# listen only on local interface
+postfix_listen_local_only: yes
+
 # redirect all mails
 postfix_redirect_local: no
 # redirect all mails user
 postfix_redirect_local_user: root
+
 # start on boot
 postfix_service_enabled: yes
 # current state: started, stopped
