@@ -1,8 +1,10 @@
 ---
 
 - hosts: all
+  sudo: yes
   roles:
     - franklinkim.postfix
   vars:
     postfix_redirect_local: yes
+    postfix_listen_local_only: yes
     postfix_redirect_local_user: root
