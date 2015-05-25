@@ -1,5 +1,22 @@
 ---
 
 - include: install.yml
-- include: redirect.yml
+  tags:
+    - system
+    - postfix
+    - install
+    - postfix-install
+
+- include: config.yml
+  tags:
+    - system
+    - postfix
+    - config
+    - postfix-config
+
 - include: service.yml
+  tags:
+    - system
+    - postfix
+    - service
+    - postfix-service

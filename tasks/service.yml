@@ -1,11 +1,7 @@
 ---
 
 - name: Configuring service
-  service: >
-    name=postfix
-    state={{ postfix_service_state }}
-    enabled={{ postfix_service_enabled }}
-  tags:
-    - system
-    - postfix
-    - service
+  service:
+    name: postfix
+    state: "{{ postfix_service_state }}"
+    enabled: "{{ postfix_service_enabled }}"
